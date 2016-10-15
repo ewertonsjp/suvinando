@@ -16,22 +16,57 @@
         <h1>Fatura {{invoice.competencia}}<h1>
       </div>
 
+      <!-- Add Tickets-->
       <div class="row">
         <div class="col-md-8">
-          <table class="table table-striped">
-            <tr>
-              <th>Ticket</th>
-              <th>Price</th>
-            <tr>
-            <tr ng-repeat="ticket in invoice.tickets">
-              <td>{{ticket.description}}</td>
-              <td>{{ticket.price}}</td>
-            </tr>
-            <tr>
-              <td>Total</td>
-              <td>{{invoice.total}}</td>
-            </tr>
-          </table>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Add a new Ticket...</h3>
+            </div>
+            <div class="panel-body">
+              <form ng-submit="invoice.addTicket()" class="form">
+                <div class="form-group">
+                  <label for="iDescription">Description</label>
+                  <input type="text" class="form-control" id="iDescription" ng-model="invoice.ticketInView.description" placeholder="Description...">
+                </div>
+
+                <div class="form-group">
+                  <label for="iPrice">Price</label>
+                  <input type="number" class="form-control" id="iPrice" ng-model="invoice.ticketInView.price" placeholder="Price...">
+                </div>
+
+                <input class="btn btn-primary" type="submit" value="add">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-8">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Ticket's List...</h3>
+            </div>
+            <div class="panel-body">
+              <table class="table table-striped">
+                <tr>
+                  <th>Ticket</th>
+                  <th>Price</th>
+                <tr>
+                <tr ng-repeat="ticket in invoice.tickets">
+                  <td>{{ticket.description}}</td>
+                  <td>{{ticket.price}}</td>
+                </tr>
+                <tr>
+                  <td>Total</td>
+                  <td>{{invoice.total}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
