@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="Keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>suvinando | v0.1.0</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../libraries/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../libraries/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+  <body ng-app="suvApp">
+    <div ng-controller="invoiceController as invoice" class="container">
+      <div class="page-header">
+        <h1>Fatura {{invoice.competencia}}<h1>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <table class="table table-striped">
+            <tr>
+              <th>Ticket</th>
+              <th>Price</th>
+            <tr>
+            <tr ng-repeat="ticket in invoice.tickets">
+              <td>{{ticket.description}}</td>
+              <td>{{ticket.price}}</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td>{{invoice.total}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../libraries/angular/angular.min.js"></script>
+    <script src="../../js/main.js"></script>
+    <!-- Controllers -->
+    <script src="../../controllers/invoiceController.js"></script>
+  </body>
+</html>
