@@ -15,11 +15,16 @@ angular.module('suvApp',[]).controller('invoiceController', function(){
 
   invoice.addTicket = function() {
     addTicket(invoice.ticketInView);
+    cleanTicketInView();
   }
 
   function addTicket(ticket) {
     invoice.tickets.push(ticket)
     invoice.total += ticket.price
+  }
+
+  function cleanTicketInView() {
+    invoice.ticketInView = [{'description':'','price':0}];
   }
 
 })
