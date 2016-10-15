@@ -1,0 +1,19 @@
+{
+  "name": "suvinando",
+  "authors": [
+    "ewertonsjp <ewertonsjp@gmail.com>"
+  ],
+  "description": "For suvinos!",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "suvinando"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "repository": "",
+  "private": true,
+  "dependencies": {
+    "angular":"latest","font-awesome":"latest","bootstrap":"latest"
+  }
+}
