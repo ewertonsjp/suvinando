@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../libraries/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../libraries/bootstrap/dist/css/bootstrap.min.css">
+
+    <style>
+      .currency {
+        text-align: right;
+      }
+    </style>
+
   </head>
   <body ng-app="suvApp">
     <div ng-controller="invoiceController as invoice" class="container">
@@ -18,7 +25,7 @@
 
       <!-- Add Tickets-->
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
           <div class="panel panel-primary">
             <div class="panel-heading">
               <h3 class="panel-title">Add a new Ticket...</h3>
@@ -47,7 +54,7 @@
 
       <!-- Ticket's List-->
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
           <div class="panel panel-primary">
             <div class="panel-heading">
               <h3 class="panel-title">Ticket's List...</h3>
@@ -56,15 +63,15 @@
               <table class="table table-striped">
                 <tr>
                   <th>Ticket</th>
-                  <th>Price</th>
+                  <th class="currency">Price</th>
                 <tr>
                 <tr ng-repeat="ticket in invoice.tickets">
                   <td>{{ticket.description}}</td>
-                  <td>{{ticket.price}}</td>
+                  <td class="currency">{{ticket.price | currency:'R$'}}</td>
                 </tr>
                 <tr>
-                  <td>Total</td>
-                  <td>{{invoice.total}}</td>
+                  <td><b>Total</b></td>
+                  <td class="currency"><b>{{invoice.total | currency:'R$'}}</b></td>
                 </tr>
               </table>
             </div>
