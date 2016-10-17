@@ -46,15 +46,11 @@
               </form>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Deus tá vendo JOVEM ;\ -->
-      <br>
+          <!-- Deus tá vendo JOVEM ;\ -->
+          <br>
 
-      <!-- Ticket's List-->
-      <div class="row">
-        <div class="col-md-6">
+          <!-- Ticket's List-->
           <div class="panel panel-primary">
             <div class="panel-heading">
               <h3 class="panel-title">Ticket's List...</h3>
@@ -74,6 +70,19 @@
                   <td class="currency"><b>{{invoice.total | currency:'R$'}}</b></td>
                 </tr>
               </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">How much to pay...</h3>
+            </div>
+            <div class="panel-body" ng-repeat="partner in invoice.partners">
+                <div class="col-md-4">
+                  {{partner.name}} - {{partner.amount | currency:'R$'}}
+                <div>
             </div>
           </div>
         </div>
