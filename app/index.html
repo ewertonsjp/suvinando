@@ -7,12 +7,24 @@
     <title>suvinando | v0.1.0</title>
     <link rel="icon" href="images/favicon.png">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="libraries/font-awesome/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="libraries/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="libraries/bootstrap/dist/css/bootstrap.min.css">
   </head>
-  <body>
-    <h1>Olá, ewertonsjp!</h1>
+  <body ng-app="suvApp">
+    <div class="row">
+      <ui-view></ui-view>
+    </div>
+
+    <!-- libraries -->
     <script src="libraries/angular/angular.min.js"></script>
-    <script src="js/main.js" asyn defer></script>
+    <script src="libraries/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <!-- ui route -->
+    <script src="app.js"></script>
+
+    <!-- js -->
+    <script src="js/main.js"></script>
+    <!-- components -->
+    <script src="components/invoice/invoice.ctrl.js"></script>
   </body>
 </html>

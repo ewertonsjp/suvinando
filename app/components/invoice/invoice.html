@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Fatura {{competencia}}<h1>
+  </div>
+
+  <!-- Add Tickets-->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Add a new Ticket...</h3>
+        </div>
+        <div class="panel-body">
+          <form ng-submit="addTicket()" class="form">
+            <div class="form-group">
+              <label for="iDescription">Description</label>
+              <input type="text" class="form-control" id="iDescription" ng-model="ticketInView.description" placeholder="Description...">
+            </div>
+
+            <div class="form-group">
+              <label for="iPrice">Price</label>
+              <input type="number" class="form-control" id="iPrice" ng-model="ticketInView.price" placeholder="Price...">
+            </div>
+
+            <input class="btn btn-primary" type="submit" value="add">
+          </form>
+        </div>
+      </div>
+
+      <!-- Deus tá vendo JOVEM ;\ -->
+      <br>
+
+      <!-- Ticket's List-->
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Ticket's List...</h3>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped">
+            <tr>
+              <th>Ticket</th>
+              <th class="currency">Price</th>
+            <tr>
+            <tr ng-repeat="ticket in tickets">
+              <td>{{ticket.description}}</td>
+              <td class="currency">{{ticket.price | currency:'R$'}}</td>
+            </tr>
+            <tr>
+              <td><b>Total</b></td>
+              <td class="currency"><b>{{total | currency:'R$'}}</b></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">How much to pay...</h3>
+        </div>
+        <div class="panel-body" ng-repeat="partner in partners">
+            <div class="col-md-4">
+              {{partner.name}} - {{partner.amount | currency:'R$'}}
+            <div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
