@@ -1,8 +1,11 @@
 angular.module('suvApp').controller('invoiceCtrl', function($scope){
 
+  /*TEMP*/
+  $scope.id = -1;
+
   $scope.competencia = "Out2016";
   $scope.total = 0;
-  $scope.ticketInView = [{'description':'','price':0}];
+  $scope.ticketInView = [{'id':'','description':'','price':0}];
 
   $scope.partners = [
     {'name':'Ewerton Costa', 'amount':0.00},
@@ -24,9 +27,27 @@ angular.module('suvApp').controller('invoiceCtrl', function($scope){
     cleanTicketInView();
   }
 
+  $scope.updateTicketInView = function(index) {
+    var ticketByIndex = $scope.tickets[index];
+    $scope.ticketInView.id = ticketByIndex.id;
+    $scope.ticketInView.description = ticketByIndex.description;
+    $scope.ticketInView.price = ticketByIndex.price;
+  }
+
   function addTicket(ticket) {
-    $scope.tickets.push(ticket)
-    $scope.total += ticket.price
+    if (!ticket.id) {
+        ticket.id = nextId();
+        $scope.tickets.push(ticket)
+    } else {
+        $scope.tickets[ticket.id] = ticket;
+    }
+
+    var sum = 0;
+    for (i = 0; i < $scope.tickets.length; i++) {
+      sum = sum +=$scope.tickets[i].price;
+    }
+
+    $scope.total = sum;
     splitthebill();
   }
 
@@ -39,6 +60,10 @@ angular.module('suvApp').controller('invoiceCtrl', function($scope){
 
   function cleanTicketInView() {
     $scope.ticketInView = [{'description':'','price':0}];
+  }
+
+  function nextId() {
+      return ++$scope.id;
   }
 
 })

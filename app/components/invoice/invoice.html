@@ -12,6 +12,7 @@
         </div>
         <div class="panel-body">
           <form ng-submit="addTicket()" class="form">
+            <input type="hidden" ng-model="ticketInView.id"/>
             <div class="form-group">
               <label for="iDescription">Description</label>
               <input type="text" class="form-control" id="iDescription" ng-model="ticketInView.description" placeholder="Description...">
@@ -39,16 +40,20 @@
           <table class="table table-striped">
             <tr>
               <th>Ticket</th>
-              <th class="currency">Price</th>
+              <th>Price</th>
+              <th>Action</th>
             <tr>
-            <tr ng-repeat="ticket in tickets">
+            <tr ng-repeat="ticket in tickets track by $index">
               <td>{{ticket.description}}</td>
               <td class="currency">{{ticket.price | currency:'R$'}}</td>
+              <td><a ng-click="updateTicketInView($index)">Edit</a> </td>
             </tr>
             <tr>
               <td><b>Total</b></td>
               <td class="currency"><b>{{total | currency:'R$'}}</b></td>
+              <td>X</td>
             </tr>
+
           </table>
         </div>
       </div>
