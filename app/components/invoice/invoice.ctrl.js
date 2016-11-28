@@ -1,10 +1,11 @@
-angular.module('suvApp').controller('invoiceCtrl', function($scope, invoiceFactory) {
+angular.module('suvApp').controller('invoiceCtrl', function($scope, invoiceService) {
 
-  $scope.invoice = invoiceFactory;
+  $scope.invoice = invoiceService.findActiveInvoice();
   $scope.ticketInView = [{'id':'','description':'','price':0}];
 
   $scope.addTicket = function() {
     $scope.invoice.addTicket($scope.ticketInView);
+    invoiceService.updateInvoice($scope.invoice);
     cleanTicketInView();
   }
 
