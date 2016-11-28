@@ -1,6 +1,6 @@
 <div class="container">
   <div class="page-header">
-    <h1>Fatura {{competencia}} ({{status}})<h1>
+    <h1>Fatura {{invoice.competencia}} ({{invoice.status}})<h1>
   </div>
 
   <!-- Add Tickets-->
@@ -43,7 +43,7 @@
               <th>Price</th>
               <th>Action</th>
             <tr>
-            <tr ng-repeat="ticket in tickets track by $index">
+            <tr ng-repeat="ticket in invoice.tickets track by $index">
               <td>{{ticket.description}}</td>
               <td class="currency">{{ticket.price | currency:'R$'}}</td>
               <td><a ng-click="updateTicketInView($index)">Edit</a> </td>
@@ -64,7 +64,7 @@
         <div class="panel-heading">
           <h3 class="panel-title">How much to pay...</h3>
         </div>
-        <div class="panel-body" ng-repeat="partner in partners">
+        <div class="panel-body" ng-repeat="partner in invoice.partners">
             <div class="col-md-4">
               {{partner.name}} - {{partner.outcome | currency:'R$'}} - {{partner.amount | currency:'R$'}}
             <div>
