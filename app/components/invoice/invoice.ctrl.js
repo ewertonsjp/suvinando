@@ -4,21 +4,22 @@ angular.module('suvApp').controller('invoiceCtrl', function($scope){
   $scope.id = -1;
 
   $scope.competencia = "Out2016";
+  $scope.status = "EM ABERTO";
   $scope.total = 0;
   $scope.ticketInView = [{'id':'','description':'','price':0}];
 
   $scope.partners = [
-    {'name':'Ewerton Costa', 'amount':0.00},
-    {'name':'Walter White', 'amount':0.00},
-    {'name':'Rex', 'amount':0.00},
-    {'name':'Bill', 'amount':0.00}
+    {'name':'Ewerton Costa', 'outcome':-5.87, 'amount':0.00},
+    {'name':'Walter White', 'outcome':9.85, 'amount':0.00},
+    {'name':'Rex', 'outcome':-2.49, 'amount':0.00},
+    {'name':'Bill', 'outcome':-1.49, 'amount':0.00}
   ];
 
   $scope.tickets = [];
   if ($scope.tickets.length == 0) {
     addTicket({'description':'Aluguel', 'price':200.00})
-    addTicket({'description':'Luz', 'price':20.00});
-    addTicket({'description':'Água', 'price':17.00});
+    addTicket({'description':'Luz', 'price':17.81});
+    addTicket({'description':'Água', 'price':27.33});
     addTicket({'description':'Faxina', 'price':60.00});
   }
 
@@ -54,7 +55,7 @@ angular.module('suvApp').controller('invoiceCtrl', function($scope){
   function splitthebill() {
     var value = $scope.total / $scope.partners.length;
     for (i = 0; i < $scope.partners.length; i++) {
-      $scope.partners[i].amount = value;
+      $scope.partners[i].amount = value - $scope.partners[i].outcome;
     }
   }
 
